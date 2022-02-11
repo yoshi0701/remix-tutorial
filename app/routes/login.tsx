@@ -73,10 +73,10 @@ export const action: ActionFunction = async ({
       const user = await login({ username, password });
       console.log({ user });
       if (!user) {
-        return badRequest({
+        return {
           fields,
           formError: `Username/Password combination is incorrect`
-        });
+        };
       }
       return badRequest({
         fields,
