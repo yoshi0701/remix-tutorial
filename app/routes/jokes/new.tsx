@@ -2,6 +2,7 @@ import type { ActionFunction } from "remix";
 import { useActionData, redirect, json } from "remix";
 import { db } from "~/utils/db.server";
 import { requireUserId } from "~/utils/session.server";
+import {containerFlow} from 'mdast-util-to-markdown/lib/util/container-flow';
 
 function validateJokeContent(content: string) {
   if (content.length < 10) {
@@ -136,4 +137,12 @@ export default function NewJokeRoute() {
       </form>
     </div>
   );
+}
+
+export function ErrorBoundary() {
+  return (
+    <div className="error-container">
+      Something unexpacted went wrong. Sorry about that.
+    </div>
+  )
 }
